@@ -15,7 +15,8 @@
     <h5 class="my-0 mr-md-auto font-weight-normal">Wildberries</h5>
 
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" href="{{route('index')}}">Главная</a>
+            <a class="p-2 text-dark" href="{{route('index')}}">Ваши поставки</a>
+            <a class="p-2 text-dark" href="{{route('index')}}">Токены</a>
         </nav>
     </div>
     <form action="{{route('logout')}}" method="post">
@@ -30,6 +31,11 @@
             margin-right: 20px;
         }
     }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        background: linear-gradient(102.42deg,#da15b8 59.69%,#8d06cc) !important;
+    }
+
     .accordion-button {
         background: linear-gradient(102.42deg,#da15b8 59.69%,#8d06cc) !important;
         border: 0 !important;

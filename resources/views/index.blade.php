@@ -23,7 +23,17 @@
     @endif
 
     <div class="container_my mt-5 mb-5">
-        <div class="card">
+        <div class="bd-example">
+            <ul class="nav nav-tabs" style="border: none;">
+                @foreach($wareHouses as $wareHouse)
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">{{$wareHouse->name}}</a>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+
+        <div class="card" style="border-top-left-radius: 0; border-top-right-radius: 0;">
             <form id="myForm" action="{{route('index')}}">
                 <div class="card-header">
                     <h3 class="card-title"></h3>
@@ -55,16 +65,16 @@
                                                     <label for="">сКГТ-признак</label>
                                                     <select class="form-control" name="isLargeCargo-in">
                                                         <option value="">Выберите</option>
-                                                        <option value="true" {{request()->get('isLargeCargo-in') == true ? 'selected' : ''}}>Да</option>
-                                                        <option value="false" {{request()->get('isLargeCargo-in') == false ? 'selected' : ''}}>Нет</option>
+                                                        <option value="true" {{request()->get('isLargeCargo-in') == "true" ? 'selected' : ''}}>Да</option>
+                                                        <option value="false" {{request()->get('isLargeCargo-in') == "false" ? 'selected' : ''}}>Нет</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group"  style="width: 50%">
                                                     <label for="">Статус</label>
                                                     <select class="form-control" name="done-in">
                                                         <option value="">Выберите</option>
-                                                        <option value="true" {{request()->get('done-in') == true ? 'selected' : ''}}>Выполнена</option>
-                                                        <option value="false" {{request()->get('done-in') == false ? 'selected' : ''}}>Не выполнена</option>
+                                                        <option value="true" {{request()->get('done-in') == "true" ? 'selected' : ''}}>Выполнена</option>
+                                                        <option value="false" {{request()->get('done-in') == "false" ? 'selected' : ''}}>Не выполнена</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -218,7 +228,7 @@
                         </thead>
                         <tbody>
                         @foreach($incomes as $key => $income)
-                            <tr style="cursor: pointer" onclick="openNew({{$income->id}})">
+                            <tr style="cursor: pointer" onclick="openNew('{{$income->incomeId}}')">
                                 <td>
                                     {{$income->incomeId}}
                                 </td>
@@ -261,9 +271,9 @@
             form.submit();
         });
 
-        function openNew()
+        function openNew(id)
         {
-
+            window.location.href = `/${id}`;
         }
     </script>
 @endsection

@@ -19,5 +19,8 @@ Route::post('/login/form', [\App\Http\Controllers\Auth\AuthController::class, 'l
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [\App\Http\Controllers\Controller::class, 'index'])->name('index');
+    Route::get('/{income}', [\App\Http\Controllers\Controller::class, 'show'])->name('show');
     Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
+
+//    Route::get('/');
 });
